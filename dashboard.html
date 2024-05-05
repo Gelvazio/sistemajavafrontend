@@ -30,7 +30,7 @@
             <li>
                 <a href="#">
                     <i class='bx bx-box'></i>
-                    <span class="links_name">Product</span>
+                    <span class="links_name" onclick="redirectPage('produto')">Product</span>
                 </a>
             </li>
             <li>
@@ -285,6 +285,10 @@
                 sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
             } else
                 sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+
+        function redirectPage(pagina) {
+            window.location.href = pagina + ".html";
         }
     </script>
 

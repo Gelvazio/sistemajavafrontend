@@ -1,8 +1,21 @@
+var URL_BASE = "https://sistemajavafrontend.vercel.app/";
+var SERVIDOR_DESENVOLVIMENTO = false;
+
+function loadUrlBase() {
+    var url_atual = window.location.href;
+    if (url_atual.includes("http://localhost:5500/")) {
+        SERVIDOR_DESENVOLVIMENTO = true;
+    }
+
+    if (SERVIDOR_DESENVOLVIMENTO) {
+        URL_BASE = "http://localhost:3000/";
+    }
+}
+
+loadUrlBase();
+
 function atualizaTask() {
     console.log("Atualizando task...");
-
-
-    fetch
     console.log("Atualizando api task...");
 
     callApi("GET", "produtos");
@@ -17,7 +30,7 @@ function getHeaders() {
 
 
 function callApi(method, rota, func = false) {
-    const url = "http://localhost:3000/" + rota;
+    const url = URL_BASE + rota;
     try {
         fetch(url, {
                 method: method, // *GET, POST, PUT, DELETE, etc.
@@ -42,7 +55,7 @@ function callApi(method, rota, func = false) {
 }
 
 function callApiPost(method, rota, data = false, func = false) {
-    const url = "http://localhost:3000/" + rota;
+    const url = URL_BASE + rota;
     try {
         fetch(url, {
                 method: method, // *GET, POST, PUT, DELETE, etc.
@@ -146,18 +159,18 @@ function excluirProduto(id) {
     });
 }
 
-$('#formulario01').on('show.bs.modal', function(event) {
-    var button = document. // Botão que acionou o modal
+// $('#formulario01').on('show.bs.modal', function(event) {
+//     var button = document. // Botão que acionou o modal
 
-    var recipient = button.data('whatever') // Extrai informação dos atributos data-*
-        // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
-        // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
-    var modal = $(this);
+//     var recipient = button.data('whatever') // Extrai informação dos atributos data-*
+//         // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+//         // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+//     var modal = $(this);
 
-    modal.find('.modal-title').text('Nova mensagem para ' + recipient);
-    modal.find('.modal-body input').val(recipient);
+//     modal.find('.modal-title').text('Nova mensagem para ' + recipient);
+//     modal.find('.modal-body input').val(recipient);
 
-})
+// })
 
 function alterarProduto(id) {
     callApi("DELETE", "produtos/" + id, function() {
