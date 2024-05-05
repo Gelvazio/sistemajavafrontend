@@ -1,0 +1,93 @@
+/*
+
+* {
+    font-family: 'Nanum Gothic', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
+
+:root {
+    --color-red: #FF4949;
+    --color-purple: #541690;
+    --color-orange: #FF8D29;
+    --color-yellow: #FFCD38;
+    --color-blue-senac: #004284c7;
+    --color-orange-senac: #f7941d;
+    --font-lg: 38px;
+    --font-md: 24px;
+    --font-sm: 15px;
+    --font-xs: 9px;
+    --size-lg: 1280px;
+    --size-md: 976px;
+    --size-sm: 768px;
+    --size-xs: 500px;
+}
+
+a {
+    text-decoration: none;
+}
+
+div.container {
+    font-size: var(--font-sm);
+    height: 80%;
+}
+
+.fundo-branco {
+    background: #f1f1f1;
+}
+
+.container-table {
+    width: 100%;
+    padding: 10px;
+    color: var(--color-yellow);
+}
+
+.containerTable-lblTitle {
+    font-weight: bolder;
+    color: #fff;
+}
+
+.containerTable-lblValue {
+    text-align: left;
+    padding: 1px;
+    background-color: rgba(255, 255, 255, 0.11);
+    color: #fff;
+    transition: box-shadow .5s, transform .5s, color .5s;
+}
+
+.containerTable-lblValue a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* EVENTOS DE HOVER - PASSAR O MOUSE... */
+
+.containerTable-lblValue:hover {
+    box-shadow: 0 10px 10px var(--color-orange-senac);
+    transform: translateY(-10px);
+    background-color: var(--color-purple);
+    color: var(--color-yellow);
+    font-weight: bolder;
+}
+
+
+/* tira o efeito da ultima coluna */
+
+.containerTable-lblValue:last-child:hover {
+    box-shadow: none;
+    transform: none;
+    font-weight: none;
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+.container-table>tbody>tr:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+.tableValue-btnOption:hover {
+    box-shadow: 0 0 5px var(--color-orange);
+    background-color: rgba(255, 255, 255, 0.127);
+    font-weight: bolder;
+}

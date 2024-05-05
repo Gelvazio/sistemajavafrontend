@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - 04</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+    <div class="wrap">
+        <h1>Rise</h1>
+        <h3>I built something similar as an engineer on Identity.com</h3>
+        <div>
+            <label for="fname">First Name</label>
+            <input id="fname" type="text" class="cool" />
+        </div>
+
+        <div>
+            <label for="lname">Last Name</label>
+            <input id="lname" type="text" class="cool" />
+        </div>
+
+        <div>
+            <label for="email">Some Long Copy Goes Here</label>
+            <input id="email" type="text" class="cool" />
+        </div>
+    </div>
+
+</body>
+
+<script src="../../vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script defer>
+    $('input').on('focusin', function() {
+        $(this).parent().find('label').addClass('active');
+    });
+
+    $('input').on('focusout', function() {
+        if (!this.value) {
+            $(this).parent().find('label').removeClass('active');
+        }
+    });
+</script>
+
+</html>

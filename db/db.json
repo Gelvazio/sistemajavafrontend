@@ -1,0 +1,85 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Hambúrguer",
+      "descricao": "Pão, bife de hambúrguer 90g, salada e batata.",
+      "preco": 8.5,
+      "categoria_id": 1
+    },
+    {
+      "id": "2",
+      "nome": "X-Búrguer",
+      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, salada e batata.",
+      "preco": 10.5,
+      "categoria_id": 1
+    },
+    {
+      "id": "3",
+      "nome": "X-Bacon",
+      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
+      "preco": 12.5,
+      "categoria_id": 1
+    },
+    {
+      "id": "4",
+      "nome": "Salsichas",
+      "descricao": "Pão, bife de hambúrguer 90g, salada e batata.",
+      "preco": 8.5,
+      "categoria_id": 1
+    },
+    {
+      "id": "5",
+      "descricao": "feijao",
+      "preco": "15,87",
+      "categoria_id": "1"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "descricao": "Desenvolvimento Agenda",
+      "data": 8.5,
+      "horainicio": "9",
+      "horafim": "10",
+      "minutoinicio": "9",
+      "minutofim": "10"
+    },
+    {
+      "id": "2",
+      "descricao": "Ajustes Contas a Pagar",
+      "data": 8.5,
+      "horainicio": "9",
+      "horafim": "10",
+      "minutoinicio": "9",
+      "minutofim": "10"
+    },
+    {
+      "id": "3",
+      "descricao": "Suporte Contas a Pagar 1",
+      "data": 8.5,
+      "horainicio": "9",
+      "horafim": "10",
+      "minutoinicio": "9",
+      "minutofim": "10"
+    },
+    {
+      "id": "4",
+      "descricao": "Suporte Contas a Pagar 2",
+      "data": 8.5,
+      "horainicio": "9",
+      "horafim": "10",
+      "minutoinicio": "9",
+      "minutofim": "10"
+    },
+    {
+      "id": "5",
+      "descricao": "Suporte Contas a Pagar 3",
+      "data": 8.5,
+      "horainicio": "9",
+      "horafim": "10",
+      "minutoinicio": "9",
+      "minutofim": "10"
+    }
+  ]
+}

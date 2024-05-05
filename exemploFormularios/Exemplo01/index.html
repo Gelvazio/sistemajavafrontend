@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - 01</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="head">
+        <h1 id="title"> McDonald's Survey</h1>
+        <p id="description"> Please help us improve our service</p>
+    </div>
+    <div id="body">
+        <form id="survey-form">
+            <Label id="name-label" for="name"> 
+    <p>Name</p>
+  </Label>
+            <input id="name" class="info" type="text" required placeholder="Enter your Name"></input>
+            <Label id="email-label" for="Email"> 
+  <p>Email</p>
+  </Label>
+            <Input type="Email" class="info" placeholder="Enter your Email" required id="email">
+            </input>
+            <Label id="number-label" for="Age">
+       <p>Age</p>
+</Label>
+            <Input type="number" class="info" placeholder="Enter your Age" min="12" max="60" required id="number">
+            </input>
+            <p> Status</p>
+            <select id="dropdown" class="info" name="role" required>
+  <option disabled selected value> Current Status</option>
+  <option value="Student"> Student</option>
+  <option value="Full Time Job"> Full Time Job</option>
+<option value="Part Time Job">Part Time Job</option>
+  <option value="Other">Other</option>
+</select>
+
+            <div>
+                <p> Rate your experience at McDonald's</p>
+                <input type="radio" checked name="exp" value="1"> Beautiful
+                </input>
+                <br>
+                <input type="radio" name="exp" value="2"> Nice
+                </input>
+                <br>
+                <input type="radio" name="exp" value="3"> Not so good</input>
+                <br>
+                <input type="radio" name="exp" value="4"> Horrible
+                </input>
+            </Div>
+            <br>
+            <div id="checks">
+                <p> What could be improved in your opinion?</p>
+                <input type="checkbox" name="improvement" value="1"> Speed of the Service</input>
+                <br>
+                <input type="checkbox" name="improvement" value="2"> Quality of the Service</input>
+                <br>
+                <input type="checkbox" name="improvement" value="3"> The price of food and beverages</input>
+            </div>
+            <br>
+            <textarea id="comments" name="comments" placeholder="Please explain here how it should be improved" rows="5" cols="82"></textarea>
+            <br>
+            <button type="submit" id="submit">Submit your answers</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
