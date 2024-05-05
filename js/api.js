@@ -1,4 +1,4 @@
-var URL_BASE = "https://sistemajavafrontend.vercel.app/";
+var URL_BASE = "https://my-json-server.typicode.com/Gelvazio/sistemajavafrontend/";
 var SERVIDOR_DESENVOLVIMENTO = false;
 
 function loadUrlBase() {
