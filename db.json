@@ -34,6 +34,34 @@
       "descricao": "feijao",
       "preco": "15,87",
       "categoria_id": "1"
+    },
+    {
+      "id": "6",
+      "nome": "Feijao",
+      "descricao": "1",
+      "preco": "2",
+      "categoria_id": "0"
+    },
+    {
+      "id": "7",
+      "nome": "feijao",
+      "descricao": "feijao",
+      "preco": "15,87",
+      "categoria_id": "0"
+    },
+    {
+      "id": "8",
+      "nome": "feijao",
+      "descricao": "feijao",
+      "preco": "15,87",
+      "categoria_id": "0"
+    },
+    {
+      "id": "9",
+      "nome": "feijao",
+      "descricao": "feijao",
+      "preco": "15,87",
+      "categoria_id": "0"
     }
   ],
   "tasks": [

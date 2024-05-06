@@ -1,5 +1,13 @@
-var URL_BASE = "https://my-json-server.typicode.com/Gelvazio/sistemajavafrontend/";
+// var URL_BASE = "https://my-json-server.typicode.com/Gelvazio/sistemajavafrontend/";
+var URL_BASE = "http://localhost:3000/";
 var SERVIDOR_DESENVOLVIMENTO = false;
+
+var ACAO_CONSULTAR = "ACAO_CONSULTAR";
+var ACAO_INCLUIR = "ACAO_INCLUIR";
+var ACAO_ALTERAR = "ACAO_ALTERAR";
+var ACAO_EXCLUIR = "ACAO_EXCLUIR";
+
+let ACAO = "ACAO_INCLUIR";
 
 function loadUrlBase() {
     var url_atual = window.location.href;
@@ -8,7 +16,7 @@ function loadUrlBase() {
     }
 
     if (SERVIDOR_DESENVOLVIMENTO) {
-        URL_BASE = "http://localhost:3333/";
+        URL_BASE = "http://localhost:3000/";
     }
 }
 
@@ -26,10 +34,7 @@ function getHeaders() {
     };
 }
 
-
 function callApi(method, rota, func = false) {
-    //     loadUrlBase();
-
     const url = URL_BASE + rota;
     try {
         fetch(url, {
@@ -83,11 +88,17 @@ function callApiPost(method, rota, data = false, func = false) {
 function confirmar(formulario) {
     const id = document.querySelector("#id").value;
     const descricao = document.querySelector("#descricao").value;
+    const nome = document.querySelector("#descricao").value;
     const preco = document.querySelector("#preco").value;
-    const categoria_id = document.querySelector("#categoria").value;
+
+    let categoria_id = document.querySelector("#categoria").value;
+    if (categoria_id == "") {
+        categoria_id = 1;
+    }
 
     const oDados = {
         id,
+        nome,
         descricao,
         preco,
         categoria_id
@@ -103,16 +114,16 @@ function atualizaConsulta() {
     callApi("GET", "produtos", function(data) {
         let aListaDados = JSON.stringify(data);
 
-        console.log(aListaDados);
+        // console.log(aListaDados);
 
         let body = document.querySelector(".containerTable-body");
         body.innerHTML = "";
 
         data.forEach(function(produto, key) {
-            console.log("codigo: " + produto["id"]);
-            console.log("descricao: " + produto["descricao"]);
-            console.log("preco: " + produto["preco"]);
-            console.log("categoria: " + produto["categoria_id"]);
+            // console.log("codigo: " + produto["id"]);
+            // console.log("descricao: " + produto["descricao"]);
+            // console.log("preco: " + produto["preco"]);
+            // console.log("categoria: " + produto["categoria_id"]);
 
             const codigo = produto["id"];
             const descricao = produto["descricao"];
@@ -135,10 +146,10 @@ function atualizaConsulta() {
 
             const acoes = `
                 <div class="botoes">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formulario01">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formulario01" onclick='incluirProduto(` + codigo + `)'>
                         Incluir
                     </button>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formulario01">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formulario01" onclick='alterarProduto(` + codigo + `)'>
                         Alterar
                     </button>
                     <button class='btn btn-danger' onclick='excluirProduto(` + codigo + `)'>Excluir</button>
@@ -163,31 +174,62 @@ function excluirProduto(id) {
     });
 }
 
-function getProximoId(id) {
-    callApi("GET", "produtos", function(data) {
-        console.log(data)
+function getProximoId(tabela, func) {
+    callApi("GET", tabela, function(data) {
+        const tamanho = data.length;
+
+        // Pega o tamanho atual dos dados e soma 1
+        const proximo_id = (parseInt(tamanho) + 1);
+
+        if (func) {
+            // Passa este novo valor por parametro para o retorno na abertura do Modal
+            func(proximo_id);
+        }
     });
 }
 
-getProximoId();
+$('#formulario01').on('show.bs.modal', function(event) {
+    console.log("CHAMANDO A FUNCAO AO INICIAR O MODAL");
+    // var button = document.querySelector("#btn_formulario_01"); // Botão que acionou o modal
+    // var recipient = button.data('whatever'); // Extrai informação dos atributos data-*
 
+    // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+    // Atualiza o conteúdo do modal.Nós vamos usar jQuery, aqui.No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+    var modal = $(this);
 
+    // modal.find('.modal-title').text('Nova mensagem para ' + 1);
+    // modal.find('.modal-body input').val(2);
 
-// $('#formulario01').on('show.bs.modal', function(event) {
-//     var button = document. // Botão que acionou o modal
+    getProximoId('produtos', function(id) {
+        let proximo_id = id;
 
-//     var recipient = button.data('whatever') // Extrai informação dos atributos data-*
-//         // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
-//         // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
-//     var modal = $(this);
+        const acao_atual = modal.find('#ACAO').val();
 
-//     modal.find('.modal-title').text('Nova mensagem para ' + recipient);
-//     modal.find('.modal-body input').val(recipient);
+        console.log("acao_atual: " + acao_atual);
 
-// })
+        if (ACAO == ACAO_INCLUIR) {
+            console.log("incluindo..." + ACAO);
+        } else {
+            proximo_id = parseInt(modal.find("#ALTERACAO_ID").value);
+            console.log("alterando...");
+        }
+
+        // Atualizacao do id da tela
+        modal.find('#id').val(proximo_id);
+    });
+})
+
+function incluirProduto() {
+    document.querySelector("#ACAO").value = ACAO_INCLUIR;
+}
 
 function alterarProduto(id) {
-    callApi("DELETE", "produtos/" + id, function() {
-        atualizaConsulta();
-    });
+    console.log("CHAMANDO A FUNCAO alterarProduto()");
+
+    document.querySelector("#ACAO").value = ACAO_ALTERAR;
+    document.querySelector("#ALTERACAO_ID").value = id;
+}
+
+function alterarProduto(id) {
+
 }
