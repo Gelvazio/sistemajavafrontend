@@ -30,6 +30,7 @@
     },
     {
       "id": "5",
+      "nome": "Feijao",
       "descricao": "feijao",
       "preco": "15,87",
       "categoria_id": "1"
@@ -80,6 +81,11 @@
       "horafim": "10",
       "minutoinicio": "9",
       "minutofim": "10"
+    }
+  ],
+  "produto_id_seq": [
+    {
+      "id": "1"
     }
   ]
 }

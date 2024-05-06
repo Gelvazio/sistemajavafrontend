@@ -8,11 +8,9 @@ function loadUrlBase() {
     }
 
     if (SERVIDOR_DESENVOLVIMENTO) {
-        URL_BASE = "http://localhost:3000/";
+        URL_BASE = "http://localhost:3333/";
     }
 }
-
-loadUrlBase();
 
 function atualizaTask() {
     console.log("Atualizando task...");
@@ -30,6 +28,8 @@ function getHeaders() {
 
 
 function callApi(method, rota, func = false) {
+    //     loadUrlBase();
+
     const url = URL_BASE + rota;
     try {
         fetch(url, {
@@ -116,6 +116,7 @@ function atualizaConsulta() {
 
             const codigo = produto["id"];
             const descricao = produto["descricao"];
+            const nome = produto["nome"];
             const preco = produto["preco"];
             const categoria = produto["categoria_id"];
 
@@ -132,7 +133,8 @@ function atualizaConsulta() {
                 descricao_categoria = "Produto de Limpeza";
             }
 
-            const acoes = `<div class="botoes">
+            const acoes = `
+                <div class="botoes">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formulario01">
                         Incluir
                     </button>
@@ -141,12 +143,14 @@ function atualizaConsulta() {
                     </button>
                     <button class='btn btn-danger' onclick='excluirProduto(` + codigo + `)'>Excluir</button>
                 </div>`;
-            body.innerHTML += `<tr>
-            <td class="containerTable-lblValue" align="center">` + codigo + `</td>
-            <td class="containerTable-lblValue">` + descricao + `</td>
-            <td class="containerTable-lblValue">` + preco + `</td>
-            <td class="containerTable-lblValue">` + descricao_categoria + `</td>
-            <td class="containerTable-lblValue">` + acoes + `</td>
+
+            body.innerHTML += `
+            <tr>
+                <td class="containerTable-lblValue" align="center">` + codigo + `</td>
+                <td class="containerTable-lblValue">` + nome + `</td>
+                <td class="containerTable-lblValue" align="center">` + preco + `</td>
+                <td class="containerTable-lblValue" align="center">` + descricao_categoria + `</td>
+                <td class="containerTable-lblValue">` + acoes + `</td>
             </tr>`;
         });
     });
@@ -158,6 +162,16 @@ function excluirProduto(id) {
         atualizaConsulta();
     });
 }
+
+function getProximoId(id) {
+    callApi("GET", "produtos", function(data) {
+        console.log(data)
+    });
+}
+
+getProximoId();
+
+
 
 // $('#formulario01').on('show.bs.modal', function(event) {
 //     var button = document. // Botão que acionou o modal
